@@ -7,9 +7,9 @@ const createProduct = async(req,res)=>{
         const imagename = req.file.filename;
         const host = req.hostname;
         const protocol = req.protocol;
-        const PORT = process.env.PORT
-
-        const filePath = `${protocol}://${host}:${PORT}/thumbnailImage/${imagename}`;
+        // const PORT = process.env.PORT
+        //PORT is only required while we test on local
+        const filePath = `${protocol}://${host}/thumbnailImage/${imagename}`;
         const addProduct = await productModel({
             title : req.body.title,
             channelName : req.body.channelName,
@@ -32,9 +32,10 @@ const createVideo = async(req,res)=>{
         const videoname = req.file.filename;
         const host = req.hostname;
         const protocol = req.protocol;
-        const PORT = process.env.PORT
+        // const PORT = process.env.PORT
             
-            const filePath = `${protocol}://${host}:${PORT}/videoUrl/${videoname}`;
+        //PORT is only required while we test on local
+            const filePath = `${protocol}://${host}/videoUrl/${videoname}`;
 
             const addVideo = await videosModel({
                 videoUrl : filePath
